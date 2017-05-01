@@ -1,5 +1,6 @@
-using DiffEqApproxFun
-using Base.Test
+using Base.Test, DiffEqApproxFun
 
-# write your own tests here
-@test 1 == 2
+tic()
+@time @testset "Direct ApproxFun Test" begin include("direct_approxfun.jl") end
+@time @testset "Indirect ApproxFun Test" begin include("indirect_approxfun.jl") end
+toc()

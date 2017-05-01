@@ -1,5 +1,9 @@
 module DiffEqApproxFun
 
-# package code goes here
+using ApproxFun, DiffEqBase
+
+include("problem_solution_types.jl")
+
+export ApproxFunProblem
 
 end # module
