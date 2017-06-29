@@ -3,10 +3,9 @@ immutable ApproxFunProblem{P,S} <: DEProblem
     space::S
 end
 
-function ApproxFunProblem(prob)
+function ApproxFunProblem(prob;n = ncoefficients(prob.u0))
   sp = space(prob.u0)
-  n = ncoefficients(prob.u0)
-  _prob = ODEProblem((t,u)->pad!(prob.f(t,Fun(sp,u)).coefficients,n),prob.u0.coefficients,prob.tspan)
+  _prob = ODEProblem((t,u)->pad!(prob.f(t,Fun(sp,u)).coefficients,n),pad!(prob.u0.coefficients,n),prob.tspan)
   return ApproxFunProblem(_prob,sp)
 end
 
@@ -33,4 +32,19 @@ end
 function DiffEqBase.solve(prob::ApproxFunProblem,alg,args...;kwargs...)
     sol = solve(prob.prob,alg,args...;kwargs...)
     ApproxFunSolution(sol,prob.space)
+end
+
+function Base.show(io::IO, A::ApproxFunProblem)
+  print(io,"Problem: ")
+  show(io,A.prob)
+  println(io)
+  print(io,"Space: ")
+  show(io, A.space)
+end
+function Base.display(io::IO, A::ApproxFunProblem)
+  print(io,"Problem: ")
+  display(io,A.prob)
+  println(io)
+  print(io,"Space: ")
+  display(io, A.space)
 end
