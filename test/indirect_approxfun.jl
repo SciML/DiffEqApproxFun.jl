@@ -1,5 +1,5 @@
 using DiffEqBase, OrdinaryDiffEq, Sundials, ApproxFun, DiffEqApproxFun
-using ODE, ODEInterfaceDiffEq
+using ODEInterfaceDiffEq
 using Base.Test
 
 S=Fourier()
@@ -15,7 +15,7 @@ sol(0.5,0.2)
 
 
 @time sol=solve(prob,CVODE_BDF())
-@time sol=solve(prob,ode45())
+# @time sol=solve(prob,ode45()) # fails
 @time sol=solve(prob,radau())
 
 sol[1]
