@@ -9,6 +9,7 @@ c=Fun(cos,S)
 
 ode_prob = ODEProblem((t,u)->u''+(c+1)*u',u0,(0.,1.))
 prob = ApproxFunProblem(ode_prob)
+@time sol=solve(prob,Euler(),dt=1/1000)
 @time sol=solve(prob,Tsit5())
 sol(0.5)
 sol(0.5,0.2)
