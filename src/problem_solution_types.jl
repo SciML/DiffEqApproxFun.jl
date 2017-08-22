@@ -1,4 +1,4 @@
-immutable ApproxFunProblem{P,S} <: DEProblem
+struct ApproxFunProblem{P,S} <: DEProblem
     prob::P
     space::S
 end
@@ -9,7 +9,7 @@ function ApproxFunProblem(prob;n = ncoefficients(prob.u0))
   return ApproxFunProblem(_prob,sp)
 end
 
-immutable ApproxFunSolution{SOL,S}
+struct ApproxFunSolution{SOL,S}
     sol::SOL
     space::S
 end
