@@ -7,7 +7,6 @@
 [![Coverage Status](https://coveralls.io/repos/JuliaDiffEq/DiffEqApproxFun.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaDiffEq/DiffEqApproxFun.jl?branch=master)
 [![codecov.io](http://codecov.io/github/JuliaDiffEq/DiffEqApproxFun.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaDiffEq/DiffEqApproxFun.jl?branch=master)
 
-[![DiffEqApproxFun](http://pkg.julialang.org/badges/DiffEqApproxFun_0.5.svg)](http://pkg.julialang.org/?pkg=DiffEqApproxFun)
 [![DiffEqApproxFun](http://pkg.julialang.org/badges/DiffEqApproxFun_0.6.svg)](http://pkg.julialang.org/?pkg=DiffEqApproxFun)
 
 DiffEqApproxFun.jl is a component package in the DifferentialEquations ecosystem. It holds the components for solving differential equations using spectral methods defined by types from ApproxFun.jl. Users interested in using this functionality should check out [DifferentialEquations.jl](https://github.com/JuliaDiffEq/DifferentialEquations.jl).
@@ -21,7 +20,7 @@ The indirect ApproxFun interface allows one to define an `ODEProblem` direction 
 To define such a problem, we first need to define our inital condition as a `Fun` type:
 
 ```julia 
-using DiffEqBase, OrdinaryDiffEq, Sundials, ApproxFun, DiffEqApproxFun
+using DiffEqApproxFun
 S=Fourier()
 u0=Fun(θ->cos(cos(θ-0.1))-cos(cos(0-0.1)),S)
 ```
@@ -42,8 +41,11 @@ prob = ApproxFunProblem(ode_prob)
 We can now solve this using any solver:
 
 ```julia
+using OrdinaryDiffEq
 sol=solve(prob,Tsit5()) # OrdinaryDiffEq.jl
+using Sundials
 sol=solve(prob,CVODE_BDF()) # Sundials.jl
+using ODEInterfaceDiffEq
 sol=solve(prob,radau()) # ODEInterfaceDiffEq.jl
 ```
 
