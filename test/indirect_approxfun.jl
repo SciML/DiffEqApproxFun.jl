@@ -1,5 +1,4 @@
 using DiffEqBase, OrdinaryDiffEq, Sundials, ApproxFun, DiffEqApproxFun
-using ODEInterfaceDiffEq
 using Base.Test
 
 S=Fourier()
@@ -19,7 +18,6 @@ sol(0.5,0.2)
 #plot!(sol(1.0),label="t=1.0")
 
 @time sol=solve(prob,CVODE_BDF())
-@time sol=solve(prob,radau())
 
 sol[1]
 sol[2,1]
