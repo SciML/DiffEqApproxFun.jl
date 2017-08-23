@@ -2,7 +2,9 @@ __precompile__()
 
 module DiffEqApproxFun
 
-using ApproxFun, DiffEqBase
+using Reexport
+@reexport using ApproxFun
+@reexport using DiffEqBase
 
 include("problem_solution_types.jl")
 include("boundary_handling.jl")
