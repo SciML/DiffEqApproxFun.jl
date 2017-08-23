@@ -23,6 +23,9 @@ end
 @inline Base.getindex(sol::ApproxFunSolution, I::AbstractArray{Int}) = Fun.(sol.space,sol.sol[I])
 
 @inline Base.length(sol::ApproxFunSolution) = length(sol.sol)
+@inline function Base.endof(sol::ApproxFunSolution)
+    endof(sol.sol)
+end
 @inline Base.size(sol::ApproxFunSolution) = size(sol.sol)
 @inline Base.eachindex(sol::ApproxFunSolution) = Base.OneTo(length(sol.u))
 

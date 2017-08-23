@@ -13,19 +13,17 @@ prob = ApproxFunProblem(ode_prob)
 sol(0.5)
 sol(0.5,0.2)
 
-#plot(sol(0.0),label="t=0")
-#plot!(sol(0.5),label="t=0.5")
-#plot!(sol(1.0),label="t=1.0")
-
 @time sol=solve(prob,CVODE_BDF())
 
 sol[1]
-sol[2,1]
+sol[5](0.2)
 
 function bc(t,u)
-  B=dirichlet(S)
+  B=Dirichlet()
   C=eye(S)[3:end,:]
-  tmp = [B;C]\[0.;0.;u]
+  tmp = [Evaluation(0);
+         Evaluation(2π);
+         C]\[0.;0.;u]
 end
 
 u0=Fun(θ->cos(cos(θ)) - cos(cos(0)),S)
@@ -39,9 +37,11 @@ condition(t,u,integrator) = true
 function affect!(integrator)
   S=Fourier()
   u = Fun(S,integrator.u)
-  B=dirichlet(S)
+  B=Dirichlet()
   C=eye(S)[3:end,:]
-  tmp = [B;C]\[0.;0.;u]
+  tmp = [Evaluation(0);
+         Evaluation(2π);
+         C]\[0.;0.;u]
   integrator.u=pad!(tmp.coefficients,length(integrator.u))
 end
 boundary_projection = DiscreteCallback(condition,affect!)
