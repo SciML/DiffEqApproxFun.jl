@@ -19,7 +19,6 @@ sol[1]
 sol[5](0.2)
 
 function bc(t,u)
-  B=Dirichlet()
   C=eye(S)[3:end,:]
   tmp = [Evaluation(0);
          Evaluation(2π);
