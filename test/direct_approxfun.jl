@@ -1,5 +1,4 @@
-using DiffEqBase, OrdinaryDiffEq, Sundials, ApproxFun, DiffEqApproxFun
-using ODE, ODEInterfaceDiffEq
+using DiffEqBase, OrdinaryDiffEq, ApproxFun, DiffEqApproxFun
 using Base.Test
 
 S=Fourier()
