@@ -44,10 +44,3 @@ function Base.show(io::IO, A::ApproxFunProblem)
   print(io,"Space: ")
   show(io, A.space)
 end
-function Base.display(io::IO, A::ApproxFunProblem)
-  print(io,"Problem: ")
-  display(io,A.prob)
-  println(io)
-  print(io,"Space: ")
-  display(io, A.space)
-end
