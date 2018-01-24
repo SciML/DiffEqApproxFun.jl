@@ -5,5 +5,5 @@ function BoundaryCallback(bc)
     tmp = bc(integrator.t,u)
     integrator.u=pad!(tmp.coefficients,length(integrator.u))
   end
-  DiscreteCallback((t,u,integrator)->true,affect!)
+  DiscreteCallback((u,t,integrator)->true,affect!)
 end
