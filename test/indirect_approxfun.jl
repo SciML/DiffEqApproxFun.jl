@@ -6,7 +6,7 @@ u0=Fun(θ->cos(cos(θ-0.1))-cos(cos(0-0.1)),S)
 c=Fun(cos,S)
 
 
-ode_prob = ODEProblem((t,u)->u''+(c+1)*u',u0,(0.,1.))
+ode_prob = ODEProblem((u,p,t)->u''+(c+1)*u',u0,(0.,1.))
 prob = ApproxFunProblem(ode_prob)
 @time sol=solve(prob,Euler(),dt=1/1000)
 @time sol=solve(prob,Tsit5())
@@ -28,7 +28,7 @@ end
 u0=Fun(θ->cos(cos(θ)) - cos(cos(0)),S)
 u0 = bc(0.0,u0)
 c=Fun(cos,S)
-ode_prob = ODEProblem((t,u)->u''+(c+1)*u',u0,(0.,1.))
+ode_prob = ODEProblem((u,p,t)->u''+(c+1)*u',u0,(0.,1.))
 
 prob = ApproxFunProblem(ode_prob)
 
