@@ -5,7 +5,7 @@ end
 
 function ApproxFunProblem(prob;n = ncoefficients(prob.u0))
   sp = space(prob.u0)
-  _prob = ODEProblem((u,p,t)->pad!(prob.f(t,Fun(sp,u)).coefficients,n),pad!(prob.u0.coefficients,n),prob.tspan,prob.p)
+  _prob = ODEProblem((u,p,t)->pad!(prob.f(Fun(sp,u),p,t).coefficients,n),pad!(prob.u0.coefficients,n),prob.tspan,prob.p)
   return ApproxFunProblem(_prob,sp)
 end
 
