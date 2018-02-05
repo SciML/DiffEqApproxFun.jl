@@ -29,7 +29,7 @@ Now let's define our ODE which takes in `Fun` types and spits out new `Fun`s:
 
 ```julia
 c=Fun(cos,S)
-ode_prob = ODEProblem((t,u)->u''+(c+1)*u',u0,(0.,1.))
+ode_prob = ODEProblem((u,p,t)->u''+(c+1)*u',u0,(0.,1.))
 ```
 
 To turn this into an indirect ApproxFun problem, we use the `ApproxFunProblem` wrapper:
