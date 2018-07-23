@@ -11,6 +11,8 @@
 
 DiffEqApproxFun.jl is a component package in the DifferentialEquations ecosystem. It holds the components for solving differential equations using spectral methods defined by types from ApproxFun.jl. Users interested in using this functionality should check out [DifferentialEquations.jl](https://github.com/JuliaDiffEq/DifferentialEquations.jl).
 
+### This repository has been deprecated. There are better ways to do this.
+
 ## Usage Examples
 
 ### Indirect ApproxFuns
