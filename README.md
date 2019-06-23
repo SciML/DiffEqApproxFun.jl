@@ -17,7 +17,7 @@ DiffEqApproxFun.jl is a component package in the DifferentialEquations ecosystem
 
 ### Indirect ApproxFuns
 
-The indirect ApproxFun interface allows one to define an `ODEProblem` direction from ApproxFun expressions. It will automatically convert this into a spectral ODE problem where the vector is the spectral coefficients. The pro for this method is that it can be used with any ODE solver on the common interface such as Sundials. However, this method uses a constant number of coefficients and truncates the expansions given by ApproxFun to always match this size and so it's a little bit wasteful. But this presents itself as one of the easiest ways to solve a spectral discretization of a PDE.
+The indirect ApproxFun interface allows one to define an `ODEProblem` directly from ApproxFun expressions. It will automatically convert this into a spectral ODE problem where the vector is the spectral coefficients. The pro for this method is that it can be used with any ODE solver on the common interface such as Sundials. However, this method uses a constant number of coefficients and truncates the expansions given by ApproxFun to always match this size and so it's a little bit wasteful. But this presents itself as one of the easiest ways to solve a spectral discretization of a PDE.
 
 To define such a problem, we first need to define our inital condition as a `Fun` type:
 
